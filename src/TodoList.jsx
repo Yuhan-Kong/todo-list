@@ -1,4 +1,4 @@
-function TodoList() {
+function TodoList(props) {
     
     return(
         <ul>
