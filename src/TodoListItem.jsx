@@ -1,4 +1,4 @@
-function TodoListItem() {
+function TodoListItem({ todo }) {
 
 }
 
