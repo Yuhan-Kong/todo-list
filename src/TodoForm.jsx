@@ -6,6 +6,12 @@ function TodoForm({ onAddTodo }) {
         event.preventDefault();
 
         const todoTitle = event.target.todoTitle.value.trim();
+
+        if (todoTitle && todoTitle !== "") {
+            onAddTodo(todoTitle);
+            event.target.reset();
+            inputRef.current.focus();
+          }
     };
     return(
         <form>
