@@ -3,8 +3,6 @@ import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import { useState } from 'react'
 
-
-
 function App() {
  const [todoList, setTodoList] = useState([]);
 
