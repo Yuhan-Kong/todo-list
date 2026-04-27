@@ -1,5 +1,5 @@
 import { useRef } from "react";
-function TodoForm() {
+function TodoForm({ onAddTodo }) {
     return(
         <form>
             <label htmlFor="todoTitle">Todo</label>
