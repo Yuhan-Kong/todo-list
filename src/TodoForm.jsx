@@ -4,6 +4,8 @@ function TodoForm({ onAddTodo }) {
 
     const handleAddTodo = (event) => {
         event.preventDefault();
+
+        const todoTitle = event.target.todoTitle.value.trim();
     };
     return(
         <form>
