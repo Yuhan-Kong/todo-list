@@ -28,7 +28,7 @@ function TodoForm({ onAddTodo }) {
                 placeholder={'Todo text'}
                 required
             />
-            <button type="submit" disabled>Add Todo</button>
+            <button type="submit" onClick={handleAddTodo}>Add Todo</button>
         </form>
     );
 }
