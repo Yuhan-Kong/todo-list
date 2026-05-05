@@ -16,6 +16,17 @@ function App() {
     setTodoList(previous => [newTodo, ...previous]);
 
   }
+
+function completeTodo(id) {
+  setTodoList(prev => prev.map(todo => {
+    if (todo.id === id) {
+      return {...todo, isCompleted: true};
+    } else {
+      return todo
+    }
+  }))
+}
+  
   return (
     <div>
       <h1>Todo List</h1>
