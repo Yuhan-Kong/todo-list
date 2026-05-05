@@ -25,6 +25,7 @@ function TodoForm({ onAddTodo }) {
                 name="todoTitle"
                 placeholder={'Todo text'}
                 required
+                value={workingTodoTitle}
             />
             <button type="submit" >Add Todo</button>
         </form>
