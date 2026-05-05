@@ -9,9 +9,9 @@ function TodoForm({ onAddTodo }) {
 
         onAddTodo(workingTodoTitle);
 
-        if (todoTitle && todoTitle !== "") {
-            onAddTodo(todoTitle);
-
+        if (workingTodoTitle && workingTodoTitle !== "") {
+            
+            setWorkingTodoTitle('');
             inputRef.current.focus();
           }
     };
