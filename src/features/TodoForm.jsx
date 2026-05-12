@@ -28,7 +28,7 @@ function TodoForm({ onAddTodo }) {
                 name="todoTitle"
                 placeholder={'Todo text'}
                 required
-                
+                labelText="Todo"
                 
             />
             <button type="submit" disabled={!workingTodoTitle.trim()} >Add Todo</button>
