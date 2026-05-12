@@ -22,14 +22,14 @@ function TodoForm({ onAddTodo }) {
             <TextInputWithLabel></TextInputWithLabel>
             <label htmlFor="todoTitle">Todo</label>
             <input 
-                ref={inputRef}
+                
                 type="text"
                 id="todoTitle"
                 name="todoTitle"
                 placeholder={'Todo text'}
                 required
-                value={workingTodoTitle}
-                onChange={(event) => setWorkingTodoTitle(event.target.value)}
+                
+                
             />
             <button type="submit" disabled={!workingTodoTitle.trim()} >Add Todo</button>
         </form>
