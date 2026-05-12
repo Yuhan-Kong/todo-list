@@ -15,7 +15,9 @@ function TodoListItem({ todo, onCompleteTodo }) {
                         checked={todo.isCompleted}
                         onChange={() => onCompleteTodo(todo.id)}
                     />
-                    {todo.title}
+                    <span>
+                        {todo.title}
+                    </span>
                 </>
             )}
         </li>
