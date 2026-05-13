@@ -31,7 +31,8 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
                             value={workingTitle}
                             onChange={(handleEdit)}
                         />
-                        <button type="button" onClick={handleCancel}>Cancel</button>       
+                        <button type="button" onClick={handleCancel}>Cancel</button> 
+                        <button type="button" onClick={handleUpdate}>Update</button>      
                     </>
                     
                     
