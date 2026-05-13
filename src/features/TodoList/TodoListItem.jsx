@@ -19,6 +19,7 @@ function TodoListItem({ todo, onCompleteTodo }) {
                     <>
                         <TextInputWithLabel
                             value={workingTitle}
+                            onChange={(handleEdit)}
                         />
                         <button type="button" onClick={handleCancel}>Cancel</button>       
                     </>
