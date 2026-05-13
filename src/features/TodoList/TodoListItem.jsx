@@ -11,7 +11,17 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
 
     function handleEdit(event) {
         setWorkingTitle(event.target.value);
-      }
+    }
+
+    function handleUpdate(event) {
+        if(!isEditing) return;
+        event.preventDefault();
+        onUpdateTodo({
+            ...todo,
+            title: workingTitle,
+        });
+        setIsEditing(false);
+    }
     return (
         <li>
             <form>
