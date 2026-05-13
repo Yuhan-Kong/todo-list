@@ -26,6 +26,16 @@ function completeTodo(id) {
     }
   }))
 }
+
+function updateTodo(editedTodo) {
+  setTodoList(prev => prev.map(todo => {
+    if (todo.id === editedTodo.id) {
+      return {...editedTodo};
+    } else {
+      return todo;
+    }
+  }))
+}
   
   return (
     <div>
