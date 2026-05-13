@@ -15,7 +15,7 @@ function TodoListItem({ todo, onCompleteTodo }) {
                         checked={todo.isCompleted}
                         onChange={() => onCompleteTodo(todo.id)}
                     />
-                    <span>
+                    <span onClick={() => setIsEditing(true)}>
                         {todo.title}
                     </span>
                 </>
