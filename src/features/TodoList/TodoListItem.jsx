@@ -24,12 +24,12 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
     }
     return (
         <li>
-            <form>
+            <form onSubmit={handleUpdate}>
                 {isEditing ? (
                     <>
                         <TextInputWithLabel
                             value={workingTitle}
-                            onChange={(handleEdit)}
+                            onChange={handleEdit}
                         />
                         <button type="button" onClick={handleCancel}>Cancel</button> 
                         <button type="button" onClick={handleUpdate}>Update</button>      
