@@ -4,22 +4,25 @@ function TodoListItem({ todo, onCompleteTodo }) {
     const [isEditing, setIsEditing] = useState(false);
     return (
         <li>
-            {isEditing ? (
-                <TextInputWithLabel
-                    value={todo.title}
-                />
-            ) : (
-                <>
-                    <input
-                        type="checkbox"
-                        checked={todo.isCompleted}
-                        onChange={() => onCompleteTodo(todo.id)}
+            <form>
+                {isEditing ? (
+                    <TextInputWithLabel
+                        value={todo.title}
                     />
-                    <span onClick={() => setIsEditing(true)}>
-                        {todo.title}
-                    </span>
-                </>
-            )}
+                ) : (
+                    <>
+                        <input
+                            type="checkbox"
+                            checked={todo.isCompleted}
+                            onChange={() => onCompleteTodo(todo.id)}
+                        />
+                        <span onClick={() => setIsEditing(true)}>
+                            {todo.title}
+                        </span>
+                    </>
+                )}
+            </form>
+            
         </li>
     );
 }
