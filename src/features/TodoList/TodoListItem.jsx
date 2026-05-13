@@ -8,6 +8,10 @@ function TodoListItem({ todo, onCompleteTodo }) {
         setWorkingTitle(todo.title);
         setIsEditing(false);
     }
+
+    function handleEdit(event) {
+        setWorkingTitle(event.target.value);
+      }
     return (
         <li>
             <form>
