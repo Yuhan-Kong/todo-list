@@ -35,7 +35,7 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
                             labelText="Todo"
                         />
                         <button type="button" onClick={handleCancel}>Cancel</button> 
-                        <button type="button" disabled={!isValidTodoTitle(workingTitle)}>Update</button>
+                        <button type="button" onClick={handleUpdate} disabled={!isValidTodoTitle(workingTitle)}>Update</button>
           
                     </>
                     
