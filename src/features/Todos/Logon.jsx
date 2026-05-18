@@ -15,6 +15,8 @@ function Logon({
 async function handleSubmit(event) {
     event.preventDefault();
 
+    setIsLoggingOn(true);
+
     try {
         
     } catch (error) {
