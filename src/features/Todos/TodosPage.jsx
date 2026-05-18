@@ -1,3 +1,6 @@
+import TodoForm from "./TodoForm";
+import TodoList from './TodoList/TodoList';
+import { useState } from "react";
 function TodosPage() {
     const [todoList, setTodoList] = useState([]);
 
@@ -31,5 +34,10 @@ function TodosPage() {
           }
         }))
       }
-      
+      return (
+        <div>
+          <TodoForm onAddTodo={addTodo} />
+          <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
+        </div>
+      )
 }
