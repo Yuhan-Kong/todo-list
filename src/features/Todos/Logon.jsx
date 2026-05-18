@@ -12,7 +12,9 @@ function Logon({
   
   }
 
-async function handleSubmit() {
+async function handleSubmit(event) {
+    event.preventDefault();
+
     try {
         
     } catch (error) {
@@ -20,4 +22,6 @@ async function handleSubmit() {
     } finally {
         
     }
+
+    
 }
