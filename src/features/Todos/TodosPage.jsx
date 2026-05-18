@@ -41,3 +41,4 @@ function TodosPage() {
         </div>
       )
 }
+export default TodosPage;
