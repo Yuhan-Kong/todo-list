@@ -7,7 +7,8 @@ function App() {
   
   return (
     <div>
-      
+      <Header />
+      <TodosPage />
     </div>
   )
 }
