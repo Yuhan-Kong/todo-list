@@ -4,18 +4,9 @@ import TodoForm from './features/TodoForm'
 import { useState } from 'react'
 
 function App() {
-  const [todoList, setTodoList] = useState([]);
+  
 
-  function addTodo(todoTitle) {
-    const newTodo = {
-      id: Date.now(),
-      title: todoTitle,
-      isCompleted: false
-    };
-
-    setTodoList(previous => [newTodo, ...previous]);
-
-  }
+ 
 
 function completeTodo(id) {
   setTodoList(prev => prev.map(todo => {
