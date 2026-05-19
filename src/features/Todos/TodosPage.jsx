@@ -16,7 +16,7 @@ function TodosPage({ token }) {
                     headers: {
                         'X-CSRF-TOKEN': token
                     },
-                    
+                    credentials: 'include'
                 })
             } catch(err) {
 
