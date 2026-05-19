@@ -104,6 +104,8 @@ function TodosPage({ token }) {
       }
       
       async function updateTodo(editedTodo) {
+        const originalTodo = todoList.find(todo => todo.id === editedTodo.id)
+        
         setTodoList(prev => prev.map(todo => {
           if (todo.id === editedTodo.id) {
             return {...editedTodo};
