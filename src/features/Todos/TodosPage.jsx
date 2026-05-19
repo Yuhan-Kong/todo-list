@@ -34,8 +34,8 @@ function TodosPage({ token }) {
             } finally {
                 setisTodoListLoading(false)
             }
-
         }
+        fetchTodos()
     }, [token])
 
     function addTodo(todoTitle) {
