@@ -53,6 +53,7 @@ function TodosPage({ token }) {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': token
             },
+            credentials: 'include',
             body: JSON.stringify({
                 title: todoTitle,
                 isCompleted: false
