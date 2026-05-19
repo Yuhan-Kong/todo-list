@@ -46,6 +46,11 @@ function TodosPage({ token }) {
         };
     
         setTodoList(previous => [newTodo, ...previous]);
+
+        const response = await fetch('/api/tasks', {
+            method:'POST',
+            
+        })
     
       }
 
