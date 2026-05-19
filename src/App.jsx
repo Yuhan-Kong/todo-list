@@ -5,7 +5,8 @@ import Header from './shared/Header'
 import Logon from './features/Logon'
 
 function App() {
-
+  const [email, setEmail] = useState('')
+  const [token, setToken] = useState('')
   
   return (
     <div>
