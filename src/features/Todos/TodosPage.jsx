@@ -62,7 +62,7 @@ function TodosPage({ token }) {
     
       }
 
-      function completeTodo(id) {
+      async function completeTodo(id) {
         setTodoList(prev => prev.map(todo => {
           if (todo.id === id) {
             return {...todo, isCompleted: true};
