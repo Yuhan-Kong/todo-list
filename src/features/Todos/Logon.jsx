@@ -35,7 +35,7 @@ async function handleSubmit(event) {
     } catch (error) {
         setError(`Error: ${error.name} | ${error.message}`);
     } finally {
-        
+        setLoading(false);
     }
 
     
