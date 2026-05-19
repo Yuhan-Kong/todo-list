@@ -72,6 +72,18 @@ function TodosPage({ token }) {
             return todo
           }
         }))
+        const response = await fetch(`/api/tasks/${id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': token
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              isCompleted: true,
+              createdAt: originalTodo.createdAt
+            })
+        })
       }
       
       function updateTodo(editedTodo) {
