@@ -1,6 +1,6 @@
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
     const [error, setError] = useState('');
@@ -36,7 +36,7 @@ function TodosPage({ token }) {
             }
 
         }
-    })
+    }, [token])
 
     function addTodo(todoTitle) {
         const newTodo = {
