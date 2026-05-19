@@ -18,7 +18,10 @@ async function handleSubmit(event) {
     setIsLoggingOn(true);
 
     try {
-        
+        const response = await fetch('/api/users/logon', {
+            method:'POST',
+            body: JSON.stringify({email, password})
+        })
     } catch (error) {
         
     } finally {
