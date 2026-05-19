@@ -18,6 +18,9 @@ function TodosPage({ token }) {
                     },
                     credentials: 'include'
                 })
+                const data = await response.json()
+
+                setTodoList(data.tasks)
             } catch(err) {
 
             } finally {
