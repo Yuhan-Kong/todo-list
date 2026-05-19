@@ -6,6 +6,12 @@ function TodosPage({ token }) {
     const [error, setError] = useState('');
     const [isTodoListLoading, setisTodoListLoading] = useState(false);
 
+    useEffect(() => {
+        async function fetchTodos() {
+            
+        }
+    })
+
     function addTodo(todoTitle) {
         const newTodo = {
           id: Date.now(),
