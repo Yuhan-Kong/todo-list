@@ -72,18 +72,35 @@ function TodosPage({ token }) {
             return todo
           }
         }))
-        const response = await fetch(`/api/tasks/${id}`, {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': token
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-              isCompleted: true,
-              createdAt: originalTodo.createdAt
+        try {
+            const response = await fetch(`/api/tasks/${id}`, {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token
+              },
+              credentials: 'include',
+              body: JSON.stringify({
+                isCompleted: true,
+                createdAt: originalTodo.createdAt
+              })
             })
-        })
+        
+            if (!response.ok) {
+              throw new Error('error')
+            }
+        
+          } catch (err) {
+            setError(err.message)
+        
+            setTodoList(prev => prev.map(todo => {
+              if (todo.id === id) {
+                return originalTodo
+              } else {
+                return todo
+              }
+            }))
+          }
       }
       
       function updateTodo(editedTodo) {
