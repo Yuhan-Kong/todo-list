@@ -9,11 +9,11 @@ function TodosPage({ token }) {
     useEffect(() => {
         async function fetchTodos() {
             try{
-
+                setisTodoListLoading(true)
             } catch(err) {
 
             } finally {
-                
+
             }
 
         }
