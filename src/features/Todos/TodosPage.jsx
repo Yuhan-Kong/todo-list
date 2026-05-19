@@ -103,7 +103,7 @@ function TodosPage({ token }) {
           }
       }
       
-      function updateTodo(editedTodo) {
+      async function updateTodo(editedTodo) {
         setTodoList(prev => prev.map(todo => {
           if (todo.id === editedTodo.id) {
             return {...editedTodo};
