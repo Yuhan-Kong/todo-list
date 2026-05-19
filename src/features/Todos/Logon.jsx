@@ -20,7 +20,9 @@ async function handleSubmit(event) {
     try {
         const response = await fetch('/api/users/logon', {
             method:'POST',
-            body: JSON.stringify({email, password})
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({email, password}),
         })
     } catch (error) {
         
