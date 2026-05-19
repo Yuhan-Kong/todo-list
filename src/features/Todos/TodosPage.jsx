@@ -30,7 +30,7 @@ function TodosPage({ token }) {
 
                 setTodoList(data.tasks)
             } catch(err) {
-
+                setError(err.message)
             } finally {
 
             }
