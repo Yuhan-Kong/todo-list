@@ -10,6 +10,8 @@ function TodosPage({ token }) {
         async function fetchTodos() {
             try{
                 setisTodoListLoading(true)
+                
+                const response = await fetch('/api/tasks',)
             } catch(err) {
 
             } finally {
