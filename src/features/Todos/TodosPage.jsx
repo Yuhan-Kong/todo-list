@@ -137,7 +137,14 @@ function TodosPage({ token }) {
       
         } catch (err) {
           setError(err.message)
-      
+        
+          setTodoList(prev => prev.map(todo => {
+            if (todo.id === editedTodo.id) {
+              return originalTodo
+            } else {
+              return todo
+            }
+          }))
           
         }
       }
