@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
     const [error, setError] = useState('');
-    const [isTodoListLoading, setisTodoListLoading] = useState(false);
+    const [isTodoListLoading, setIsTodoListLoading] = useState(false);
 
     useEffect(() => {
         async function fetchTodos() {
             try{
-                setisTodoListLoading(true)
+                setIsTodoListLoading(true)
                 
                 const response = await fetch('/api/tasks', {
                     method: 'GET',
@@ -32,7 +32,7 @@ function TodosPage({ token }) {
             } catch(err) {
                 setError(err.message)
             } finally {
-                setisTodoListLoading(false)
+                setIsTodoListLoading(false)
             }
         }
         fetchTodos()
