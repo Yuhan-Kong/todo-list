@@ -8,7 +8,14 @@ function TodosPage({ token }) {
 
     useEffect(() => {
         async function fetchTodos() {
-            
+            try{
+
+            } catch(err) {
+
+            } finally {
+                
+            }
+
         }
     })
 
