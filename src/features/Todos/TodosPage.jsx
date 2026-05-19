@@ -18,6 +18,10 @@ function TodosPage({ token }) {
                     },
                     credentials: 'include'
                 })
+                if (response.status === 401) {
+                    throw new Error('unauthorized')
+                }
+
                 const data = await response.json()
 
                 setTodoList(data.tasks)
