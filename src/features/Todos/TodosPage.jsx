@@ -158,8 +158,11 @@ function TodosPage({ token }) {
                     </button>
                 </div>
             )}
-          <TodoForm onAddTodo={addTodo} />
-          <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
+            
+            {isTodoListLoading && <p>Loading...</p>}
+
+            <TodoForm onAddTodo={addTodo} />
+            <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
         </div>
       )
 }
