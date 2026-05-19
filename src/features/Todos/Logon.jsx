@@ -24,6 +24,12 @@ async function handleSubmit(event) {
             credentials: 'include',
             body: JSON.stringify({email, password}),
         })
+
+        const data = await response.json();
+        if(response.status === 200 && data.name && data.csrfToken) {
+            onSetEmail(data.name);
+            onSetToken(data.csrfToken);
+        }
     } catch (error) {
         
     } finally {
