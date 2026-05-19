@@ -30,10 +30,10 @@ async function handleSubmit(event) {
             onSetEmail(data.name);
             onSetToken(data.csrfToken);
         } else {
-            setError("Login failed");
+            setError(`Authentication failed: ${data?.message}`);
         }
     } catch (error) {
-        
+        setError(`Error: ${error.name} | ${error.message}`);
     } finally {
         
     }
