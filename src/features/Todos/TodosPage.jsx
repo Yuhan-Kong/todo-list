@@ -63,6 +63,8 @@ function TodosPage({ token }) {
       }
 
       async function completeTodo(id) {
+        const originalTodo = todoList.find(todo => todo.id === id)
+
         setTodoList(prev => prev.map(todo => {
           if (todo.id === id) {
             return {...todo, isCompleted: true};
