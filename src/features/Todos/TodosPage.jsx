@@ -49,7 +49,10 @@ function TodosPage({ token }) {
 
         const response = await fetch('/api/tasks', {
             method:'POST',
-            
+            body: JSON.stringify({
+                title: todoTitle,
+                isCompleted: false
+            })
         })
     
       }
