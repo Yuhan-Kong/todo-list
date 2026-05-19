@@ -32,7 +32,7 @@ function TodosPage({ token }) {
             } catch(err) {
                 setError(err.message)
             } finally {
-
+                setisTodoListLoading(false)
             }
 
         }
