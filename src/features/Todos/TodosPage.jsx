@@ -3,6 +3,8 @@ import TodoList from './TodoList/TodoList';
 import { useState } from "react";
 function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
+    const [error, setError] = useState('');
+    const [isTodoListLoading, setisTodoListLoading] = useState(false);
 
     function addTodo(todoTitle) {
         const newTodo = {
