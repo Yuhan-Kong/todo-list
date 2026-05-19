@@ -49,7 +49,7 @@ function TodosPage({ token }) {
 
         const response = await fetch('/api/tasks', {
             method:'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': token
             },
