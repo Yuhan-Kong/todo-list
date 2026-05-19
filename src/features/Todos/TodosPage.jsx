@@ -44,22 +44,42 @@ function TodosPage({ token }) {
           title: todoTitle,
           isCompleted: false
         };
-    
-        setTodoList(previous => [newTodo, ...previous]);
-
-        const response = await fetch('/api/tasks', {
-            method:'POST',
+      
+        setTodoList(prev => [newTodo, ...prev]);
+      
+        try {
+          const response = await fetch('/api/tasks', {
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': token
             },
             credentials: 'include',
             body: JSON.stringify({
-                title: todoTitle,
-                isCompleted: false
+              title: todoTitle,
+              isCompleted: false
             })
-        })
-    
+          });
+      
+          if (!response.ok) {
+            throw new Error('error');
+          }
+      
+          const data = await response.json();
+      
+          setTodoList(prev =>
+            prev.map(todo =>
+              todo.id === newTodo.id ? data : todo
+            )
+          );
+      
+        } catch (err) {
+          setError(err.message);
+      
+          setTodoList(prev =>
+            prev.filter(todo => todo.id !== newTodo.id)
+          );
+        }
       }
 
       async function completeTodo(id) {
@@ -158,7 +178,7 @@ function TodosPage({ token }) {
                     </button>
                 </div>
             )}
-            
+
             {isTodoListLoading && <p>Loading...</p>}
 
             <TodoForm onAddTodo={addTodo} />
