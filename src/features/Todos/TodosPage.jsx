@@ -1,7 +1,7 @@
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
 import { useState } from "react";
-function TodosPage() {
+function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
 
     function addTodo(todoTitle) {
