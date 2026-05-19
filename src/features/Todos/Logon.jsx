@@ -29,6 +29,8 @@ async function handleSubmit(event) {
         if(response.status === 200 && data.name && data.csrfToken) {
             onSetEmail(data.name);
             onSetToken(data.csrfToken);
+        } else {
+            setError("Login failed");
         }
     } catch (error) {
         
