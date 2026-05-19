@@ -104,15 +104,42 @@ function TodosPage({ token }) {
       }
       
       async function updateTodo(editedTodo) {
-        const originalTodo = todoList.find(todo => todo.id === editedTodo.id)
-        
-        setTodoList(prev => prev.map(todo => {
-          if (todo.id === editedTodo.id) {
-            return {...editedTodo};
-          } else {
-            return todo;
+        const originalTodo = todoList.find(
+          todo => todo.id === editedTodo.id
+        )
+      
+        try {
+          setTodoList(prev => prev.map(todo => {
+            if (todo.id === editedTodo.id) {
+              return { ...editedTodo };
+            } else {
+              return todo;
+            }
+          }))
+      
+          const response = await fetch(`/api/tasks/${editedTodo.id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': token
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              title: editedTodo.title,
+              isCompleted: editedTodo.isCompleted,
+              createdAt: originalTodo.createdAt
+            })
+          })
+      
+          if (!response.ok) {
+            throw new Error('error')
           }
-        }))
+      
+        } catch (err) {
+          setError(err.message)
+      
+          
+        }
       }
       return (
         <div>
