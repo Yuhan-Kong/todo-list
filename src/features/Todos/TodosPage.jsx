@@ -38,7 +38,7 @@ function TodosPage({ token }) {
         fetchTodos()
     }, [token])
 
-    function addTodo(todoTitle) {
+    async function addTodo(todoTitle) {
         const newTodo = {
           id: Date.now(),
           title: todoTitle,
