@@ -5,6 +5,8 @@ function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
     const [error, setError] = useState('');
     const [isTodoListLoading, setIsTodoListLoading] = useState(false);
+    const [sortBy, setSortBy] = useState('creationDate');
+    const [sortDirection, setSortDirection] = useState('desc');
 
     useEffect(() => {
         async function fetchTodos() {
