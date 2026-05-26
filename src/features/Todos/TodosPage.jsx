@@ -13,7 +13,12 @@ function TodosPage({ token }) {
             try{
                 setIsTodoListLoading(true)
                 
-                const response = await fetch('/api/tasks', {
+                const params = new URLSearchParams({
+                  sortBy,
+                  sortDirection,
+                })
+
+                const response = await fetch('/api/tasks?{params}', {
                     method: 'GET',
                     headers: {
                         'X-CSRF-TOKEN': token
