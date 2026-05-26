@@ -43,7 +43,7 @@ function TodosPage({ token }) {
             }
         }
         fetchTodos()
-    }, [token])
+    }, [token, sortBy, sortDirection])
 
     async function addTodo(todoTitle) {
         const newTodo = {
