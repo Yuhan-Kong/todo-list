@@ -14,3 +14,4 @@ function FilterInput({ filterTerm, onFilterChange }) {
         </div>
     );
 }
+export default FilterInput;
