@@ -1,9 +1,9 @@
-function SortBy(
+function SortBy({
     sortBy,
     sortDirection,
     onSortByChange,
     onSortDirectionChange,
-  ) {
+}) {
     return (
         <div>
             <label htmlFor="sortBy">Sort by</label>

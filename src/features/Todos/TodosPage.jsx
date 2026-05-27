@@ -25,7 +25,7 @@ function TodosPage({ token }) {
                   sortDirection,
                 })
 
-                const response = await fetch('/api/tasks?{params}', {
+                const response = await fetch(`/api/tasks?${params}`, {
                     method: 'GET',
                     headers: {
                         'X-CSRF-TOKEN': token
