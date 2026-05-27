@@ -189,6 +189,12 @@ function TodosPage({ token }) {
 
             {isTodoListLoading && <p>Loading...</p>}
 
+            <SortBy 
+            sortBy={sortBy}
+            sortDirection={sortDirection}
+            onSortByChange={setSortBy}
+            onSortDirectionChange={setSortDirection}
+            />
             <TodoForm onAddTodo={addTodo} />
             <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
         </div>
