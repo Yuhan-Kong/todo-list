@@ -12,6 +12,8 @@ function TodosPage({ token }) {
     const [isTodoListLoading, setIsTodoListLoading] = useState(false);
     const [sortBy, setSortBy] = useState('creationDate');
     const [sortDirection, setSortDirection] = useState('desc');
+    const [filterTerm, setFilterTerm] = useState('');
+    const debouncedFilterTerm = useDebounce(filterTerm, 300);
 
     useEffect(() => {
         async function fetchTodos() {
