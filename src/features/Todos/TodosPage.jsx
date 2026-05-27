@@ -181,6 +181,9 @@ function TodosPage({ token }) {
           }))
           
         }
+        const handleFilterChange = (newTerm) => {
+          setFilterTerm(newTerm);
+        };
       }
       return (
         <div>
