@@ -30,3 +30,5 @@ function SortBy(
         </div>
       );
   }
+
+export default SortBy;
