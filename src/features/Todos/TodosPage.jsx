@@ -50,8 +50,16 @@ function TodosPage({ token }) {
                 const data = await response.json()
 
                 setTodoList(data.tasks)
-            } catch(err) {
-                setError(err.message)
+            } catch (error) {
+              if (
+                debouncedFilterTerm ||
+                sortBy !== 'creationDate' ||
+                sortDirection !== 'desc'
+              ) {
+                setFilterError(`Error filtering/sorting todos: ${error.message}`);
+              } else {
+                setError(`Error fetching todos: ${error.message}`);
+              }
             } finally {
                 setIsTodoListLoading(false)
             }
