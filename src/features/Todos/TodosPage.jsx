@@ -15,6 +15,7 @@ function TodosPage({ token }) {
     const [sortDirection, setSortDirection] = useState('desc');
     const [filterTerm, setFilterTerm] = useState('');
     const debouncedFilterTerm = useDebounce(filterTerm, 300);
+    const [dataVersion, setDataVersion] = useState(0);
 
     useEffect(() => {
         async function fetchTodos() {
