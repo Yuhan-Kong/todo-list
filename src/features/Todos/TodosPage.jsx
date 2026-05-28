@@ -20,10 +20,10 @@ function TodosPage({ token }) {
             try{
                 setIsTodoListLoading(true)
                 
-                const params = new URLSearchParams({
+                const paramsObject = {
                   sortBy,
                   sortDirection,
-                })
+                }
 
                 const response = await fetch(`/api/tasks?${params}`, {
                     method: 'GET',
