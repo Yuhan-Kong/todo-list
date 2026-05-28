@@ -194,6 +194,10 @@ function TodosPage({ token }) {
       const handleFilterChange = (newTerm) => {
         setFilterTerm(newTerm);
       };
+
+      const invalidateCache = () => {
+        setDataVersion(prev => prev + 1);
+      };
       
       return (
         <div>
