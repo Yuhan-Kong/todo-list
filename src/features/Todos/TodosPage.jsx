@@ -24,6 +24,10 @@ function TodosPage({ token }) {
                   sortBy,
                   sortDirection,
                 }
+                if(debouncedFilterTerm) {
+                  paramsObject.find = debouncedFilterTerm;
+                }
+                const params = new URLSearchParams(paramsObject);
 
                 const response = await fetch(`/api/tasks?${params}`, {
                     method: 'GET',
