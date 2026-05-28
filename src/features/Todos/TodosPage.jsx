@@ -54,7 +54,7 @@ function TodosPage({ token }) {
             }
         }
         fetchTodos()
-    }, [token, sortBy, sortDirection])
+    }, [token, sortBy, sortDirection, debouncedFilterTerm])
 
     async function addTodo(todoTitle) {
         const newTodo = {
