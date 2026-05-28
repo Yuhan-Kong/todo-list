@@ -227,6 +227,15 @@ function TodosPage({ token }) {
                 </div>
             )}
 
+            {filterError && (
+              <div>
+                <p>{filterError}</p>
+                <button onClick={() => setFilterError('')}>
+                  Clear Filter Error
+                </button>
+              </div>
+            )}
+
             {isTodoListLoading && <p>Loading...</p>}
 
             <SortBy 
