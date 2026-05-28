@@ -4,6 +4,7 @@ import useDebounce from "../../utils/useDebounce";
 import SortBy from "../../shared/SortBy";
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
+import FilterInput from "../../shared/FilterInput";
 
 
 function TodosPage({ token }) {
@@ -175,7 +176,7 @@ function TodosPage({ token }) {
         const handleFilterChange = (newTerm) => {
           setFilterTerm(newTerm);
         };
-        
+
         } catch (err) {
           setError(err.message)
         
@@ -208,6 +209,10 @@ function TodosPage({ token }) {
             sortDirection={sortDirection}
             onSortByChange={setSortBy}
             onSortDirectionChange={setSortDirection}
+            />
+            <FilterInput
+              filterTerm={filterTerm}
+              onFilterChange={handleFilterChange}
             />
             <TodoForm onAddTodo={addTodo} />
             <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
