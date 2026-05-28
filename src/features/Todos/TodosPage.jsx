@@ -5,7 +5,6 @@ import FilterInput from "../../shared/FilterInput";
 import SortBy from "../../shared/SortBy";
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
-import FilterInput from "../../shared/FilterInput";
 
 
 function TodosPage({ token }) {
