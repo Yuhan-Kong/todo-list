@@ -87,11 +87,10 @@ function TodosPage({ token }) {
       
           const data = await response.json();
       
-          setTodoList(prev =>
-            prev.map(todo =>
-              todo.id === newTodo.id ? data : todo
-            )
+          setTodoList((previous) =>
+            previous.map((todo) => (todo.id === tempId ? savedTodo : todo))
           );
+          invalidateCache();
       
         } catch (err) {
           setError(err.message);
