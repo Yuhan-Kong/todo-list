@@ -223,7 +223,12 @@ function TodosPage({ token }) {
               onFilterChange={handleFilterChange}
             />
             <TodoForm onAddTodo={addTodo} />
-            <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
+            <TodoList 
+              todoList={todoList} 
+              onCompleteTodo={completeTodo} 
+              onUpdateTodo={updateTodo} 
+              dataVersion={dataVersion}
+            />
         </div>
       )
 }
