@@ -16,6 +16,7 @@ function TodosPage({ token }) {
     const [filterTerm, setFilterTerm] = useState('');
     const debouncedFilterTerm = useDebounce(filterTerm, 300);
     const [dataVersion, setDataVersion] = useState(0);
+    const [filterError, setFilterError] = useState('');
 
     useEffect(() => {
         async function fetchTodos() {
