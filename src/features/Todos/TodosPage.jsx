@@ -145,16 +145,18 @@ function TodosPage({ token }) {
       async function updateTodo(editedTodo) {
         const originalTodo = todoList.find(
           todo => todo.id === editedTodo.id
-        )
+        );
       
         try {
-          setTodoList(prev => prev.map(todo => {
-            if (todo.id === editedTodo.id) {
-              return { ...editedTodo };
-            } else {
-              return todo;
-            }
-          }))
+          setTodoList(prev =>
+            prev.map(todo => {
+              if (todo.id === editedTodo.id) {
+                return { ...editedTodo };
+              } else {
+                return todo;
+              }
+            })
+          );
       
           const response = await fetch(`/api/tasks/${editedTodo.id}`, {
             method: 'PATCH',
@@ -168,29 +170,30 @@ function TodosPage({ token }) {
               isCompleted: editedTodo.isCompleted,
               // createdAt: originalTodo.createdAt
             })
-          })
+          });
       
           if (!response.ok) {
-            throw new Error('error')
+            throw new Error('error');
           }
-        const handleFilterChange = (newTerm) => {
-          setFilterTerm(newTerm);
-        };
-
-        } catch (err) {
-          setError(err.message)
-        
-          setTodoList(prev => prev.map(todo => {
-            if (todo.id === editedTodo.id) {
-              return originalTodo
-            } else {
-              return todo
-            }
-          }))
-          
-        }
       
+        } catch (err) {
+          setError(err.message);
+      
+          setTodoList(prev =>
+            prev.map(todo => {
+              if (todo.id === editedTodo.id) {
+                return originalTodo;
+              } else {
+                return todo;
+              }
+            })
+          );
+        }
       }
+      const handleFilterChange = (newTerm) => {
+        setFilterTerm(newTerm);
+      };
+      
       return (
         <div>
             {error && (
