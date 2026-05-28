@@ -50,6 +50,7 @@ function TodosPage({ token }) {
                 const data = await response.json()
 
                 setTodoList(data.tasks)
+                setFilterError('')
             } catch (error) {
               if (
                 debouncedFilterTerm ||
