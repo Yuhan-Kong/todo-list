@@ -97,9 +97,12 @@ function TodosPage({ token }) {
       
           const data = await response.json();
       
-          setTodoList((previous) =>
-            previous.map((todo) => (todo.id === tempId ? savedTodo : todo))
+          setTodoList(prev =>
+            prev.map(todo =>
+              todo.id === newTodo.id ? data : todo
+            )
           );
+          
           invalidateCache();
       
         } catch (err) {
@@ -138,6 +141,8 @@ function TodosPage({ token }) {
             if (!response.ok) {
               throw new Error('error')
             }
+
+            invalidateCache();
         
           } catch (err) {
             setError(err.message)
@@ -185,6 +190,8 @@ function TodosPage({ token }) {
           if (!response.ok) {
             throw new Error('error');
           }
+
+          invalidateCache();
       
         } catch (err) {
           setError(err.message);
