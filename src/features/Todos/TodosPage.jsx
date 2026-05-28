@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import useDebounce from "../../utils/useDebounce";
 import FilterInput from "../../shared/FilterInput";
@@ -195,10 +195,10 @@ function TodosPage({ token }) {
         setFilterTerm(newTerm);
       };
 
-      const invalidateCache = () => {
+      const invalidateCache = useCallback(() => {
         console.log("Invalidating memo cache after todo mutation");
         setDataVersion(prev => prev + 1);
-      };
+      }, []);
       
       return (
         <div>
