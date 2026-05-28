@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import useDebounce from "../../utils/useDebounce";
+import FilterInput from "../../shared/FilterInput";
 import SortBy from "../../shared/SortBy";
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
