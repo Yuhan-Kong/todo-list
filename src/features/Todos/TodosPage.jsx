@@ -233,6 +233,16 @@ function TodosPage({ token }) {
                 <button onClick={() => setFilterError('')}>
                   Clear Filter Error
                 </button>
+                <button
+                  onClick={() => {
+                    setFilterTerm('');
+                    setSortBy('creationDate');
+                    setSortDirection('desc');
+                    setFilterError('');
+                  }}
+                >
+                  Reset Filters
+                </button>
               </div>
             )}
 
