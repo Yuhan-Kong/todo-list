@@ -172,7 +172,10 @@ function TodosPage({ token }) {
           if (!response.ok) {
             throw new Error('error')
           }
-      
+        const handleFilterChange = (newTerm) => {
+          setFilterTerm(newTerm);
+        };
+        
         } catch (err) {
           setError(err.message)
         
@@ -185,9 +188,7 @@ function TodosPage({ token }) {
           }))
           
         }
-        const handleFilterChange = (newTerm) => {
-          setFilterTerm(newTerm);
-        };
+      
       }
       return (
         <div>
