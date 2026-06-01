@@ -5,8 +5,7 @@ function TodoList({todoList, onCompleteTodo, onUpdateTodo, dataVersion}) {
   const filteredTodoList = useMemo(() => {
     return {
       version: dataVersion,
-      //Debug: todos: todoList.filter(todo => !todo.isCompleted),
-      todos: todoList,
+      todos: todoList.filter(todo => !todo.isCompleted),
     };
   }, [todoList, dataVersion]);
 

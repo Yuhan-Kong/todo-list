@@ -11,7 +11,6 @@ function TodosPage({ token }) {
     const [todoList, setTodoList] = useState([]);
     const [error, setError] = useState('');
     const [isTodoListLoading, setIsTodoListLoading] = useState(false);
-    //Debug: const [sortBy, setSortBy] = useState('creationDate');
     const [sortBy, setSortBy] = useState('createdAt');
     const [sortDirection, setSortDirection] = useState('desc');
     const [filterTerm, setFilterTerm] = useState('');
@@ -57,7 +56,6 @@ function TodosPage({ token }) {
             } catch (error) {
               if (
                 debouncedFilterTerm ||
-                // Debug: sortBy !== 'creationDate' ||
                 sortBy !== 'createdAt' ||
                 sortDirection !== 'desc'
               ) {
@@ -211,6 +209,14 @@ function TodosPage({ token }) {
           );
         }
       }
+      const handleSortByChange = (value) => {
+        setSortBy(value);
+      };
+
+      const handleSortDirectionChange = (value) => {
+        setSortDirection(value);
+      };
+
       const handleFilterChange = (newTerm) => {
         setFilterTerm(newTerm);
       };
@@ -239,7 +245,7 @@ function TodosPage({ token }) {
                 <button
                   onClick={() => {
                     setFilterTerm('');
-                    setSortBy('creationDate');
+                    setSortBy('createdAt');
                     setSortDirection('desc');
                     setFilterError('');
                   }}
@@ -254,8 +260,8 @@ function TodosPage({ token }) {
             <SortBy 
             sortBy={sortBy}
             sortDirection={sortDirection}
-            onSortByChange={setSortBy}
-            onSortDirectionChange={setSortDirection}
+            onSortByChange={handleSortByChange}
+            onSortDirectionChange={handleSortDirectionChange}
             />
             <FilterInput
               filterTerm={filterTerm}
