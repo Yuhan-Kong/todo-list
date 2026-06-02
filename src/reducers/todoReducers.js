@@ -217,6 +217,16 @@ export function todoReducer(state, action) {
               filterError: '',
             };
         }
+
+        case TODO_ACTIONS.RESET_FILTERS: {
+            return {
+              ...state,
+              filterTerm: '',
+              sortBy: 'createdAt',
+              sortDirection: 'desc',
+              filterError: '',
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
