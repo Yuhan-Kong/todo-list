@@ -203,6 +203,13 @@ export function todoReducer(state, action) {
               filterTerm: action.payload.filterTerm,
             };
         }
+
+        case TODO_ACTIONS.CLEAR_ERROR: {
+            return {
+              ...state,
+              error: '',
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
