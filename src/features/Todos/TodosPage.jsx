@@ -233,8 +233,15 @@ function TodosPage({ token }) {
           });
         }
       }
+      
       const handleSortByChange = (value) => {
-        setSortBy(value);
+        dispatch({
+          type: TODO_ACTIONS.SET_SORT,
+          payload: {
+            sortBy: value,
+            sortDirection,
+          },
+        });
       };
 
       const handleSortDirectionChange = (value) => {
