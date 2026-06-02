@@ -22,54 +22,61 @@ function TodosPage({ token }) {
     const debouncedFilterTerm = useDebounce(filterTerm, 300);
 
     useEffect(() => {
-        async function fetchTodos() {
-            try{
-                setIsTodoListLoading(true)
-                
-                const paramsObject = {
-                  sortBy,
-                  sortDirection,
-                  isCompleted: false,
-                  limit: 100,
-                }
-                if(debouncedFilterTerm) {
-                  paramsObject.find = debouncedFilterTerm;
-                }
-                const params = new URLSearchParams(paramsObject);
-
-                const response = await fetch(`/api/tasks?${params}`, {
-                    method: 'GET',
-                    headers: {
-                        'X-CSRF-TOKEN': token
-                    },
-                    credentials: 'include'
-                })
-
-                if (response.status === 401) {
-                    throw new Error('unauthorized')
-                }
-
-                if (!response.ok) {
-                    throw new Error('error')
-                }
-                const data = await response.json()
-
-                setTodoList(data.tasks)
-                setFilterError('')
-            } catch (error) {
-              if (
+      async function fetchTodos() {
+        try {
+          dispatch({ type: TODO_ACTIONS.FETCH_START });
+      
+          const paramsObject = {
+            sortBy,
+            sortDirection,
+            isCompleted: false,
+            limit: 100,
+          };
+      
+          if (debouncedFilterTerm) {
+            paramsObject.find = debouncedFilterTerm;
+          }
+      
+          const params = new URLSearchParams(paramsObject);
+      
+          const response = await fetch(`/api/tasks?${params}`, {
+            method: 'GET',
+            headers: {
+              'X-CSRF-TOKEN': token,
+            },
+            credentials: 'include',
+          });
+      
+          if (response.status === 401) {
+            throw new Error('unauthorized');
+          }
+      
+          if (!response.ok) {
+            throw new Error('error');
+          }
+      
+          const data = await response.json();
+      
+          dispatch({
+            type: TODO_ACTIONS.FETCH_SUCCESS,
+            payload: {
+              tasks: data.tasks,
+            },
+          });
+      
+        } catch (error) {
+          dispatch({
+            type: TODO_ACTIONS.FETCH_ERROR,
+            payload: {
+              message: error.message,
+              isFilterError:
                 debouncedFilterTerm ||
                 sortBy !== 'createdAt' ||
-                sortDirection !== 'desc'
-              ) {
-                setFilterError(`Error filtering/sorting todos: ${error.message}`);
-              } else {
-                setError(`Error fetching todos: ${error.message}`);
-              }
-            } finally {
-                setIsTodoListLoading(false)
-            }
+                sortDirection !== 'desc',
+            },
+          });
         }
+      }
         fetchTodos()
     }, [token, sortBy, sortDirection, debouncedFilterTerm])
 
