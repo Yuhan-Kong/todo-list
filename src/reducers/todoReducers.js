@@ -53,6 +53,27 @@ export function todoReducer(state, action) {
                 todoList: action.payload.todos,
                 isTodoListLoading: false,
             };
+
+        case TODO_ACTIONS.FETCH_ERROR: {
+            const isFilterError = action.payload.isFilterError;
+            const message = action.payload.message;
+
+            let newError = state.error;
+            let newFilterError = state.filterError;
+
+            if (isFilterError) {
+                newFilterError = message;
+            } else {
+                newError = message;
+            }
+
+            return {
+                ...state,
+                isTodoListLoading: false,
+                error: newError,
+                filterError: newFilterError,
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
