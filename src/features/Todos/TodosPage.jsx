@@ -135,46 +135,51 @@ function TodosPage({ token }) {
       }
 
       async function completeTodo(id) {
-        const originalTodo = todoList.find(todo => todo.id === id)
-
-        setTodoList(prev => prev.map(todo => {
-          if (todo.id === id) {
-            return {...todo, isCompleted: true};
-          } else {
-            return todo
-          }
-        }))
+        const originalTodo = todoList.find(todo => todo.id === id);
+      
+        dispatch({
+          type: TODO_ACTIONS.COMPLETE_TODO_START,
+          payload: {
+            id,
+          },
+        });
+      
         try {
-            const response = await fetch(`/api/tasks/${id}`, {
-              method: 'PATCH',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
-              },
-              credentials: 'include',
-              body: JSON.stringify({
-                isCompleted: true,
-                // createdAt: originalTodo.createdAt
-              })
-            })
-        
-            if (!response.ok) {
-              throw new Error('error')
-            }
-
-            invalidateCache();
-        
-          } catch (err) {
-            setError(err.message)
-        
-            setTodoList(prev => prev.map(todo => {
-              if (todo.id === id) {
-                return originalTodo
-              } else {
-                return todo
-              }
-            }))
+          const response = await fetch(`/api/tasks/${id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': token,
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              isCompleted: true,
+            }),
+          });
+      
+          if (!response.ok) {
+            throw new Error('error');
           }
+      
+          const data = await response.json();
+      
+          dispatch({
+            type: TODO_ACTIONS.COMPLETE_TODO_SUCCESS,
+            payload: {
+              todo: data,
+            },
+          });
+      
+        } catch (err) {
+          dispatch({
+            type: TODO_ACTIONS.COMPLETE_TODO_ERROR,
+            payload: {
+              message: err.message,
+              id,
+              originalTodo,
+            },
+          });
+        }
       }
       
       async function updateTodo(editedTodo) {
