@@ -22,7 +22,7 @@ export const TODO_ACTIONS = {
     CLEAR_FILTER_ERROR: 'CLEAR_FILTER_ERROR',
   
     RESET_FILTERS: 'RESET_FILTERS',
-  };
+};
 
 export const initialTodoState = {
   todoList: [],
@@ -36,3 +36,10 @@ export const initialTodoState = {
 
   dataVersion: 0,
 };
+
+export function todoReducer(state, action) {
+    switch (action.type) {
+      default:
+        throw new Error(`Unknown action type: ${action.type}`);
+    }
+}
