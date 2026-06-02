@@ -78,29 +78,35 @@ function TodosPage({ token }) {
         }
       }
         fetchTodos()
-    }, [token, sortBy, sortDirection, debouncedFilterTerm])
+      }, [token, sortBy, sortDirection, debouncedFilterTerm])
 
-    async function addTodo(todoTitle) {
+      async function addTodo(todoTitle) {
         const newTodo = {
           id: Date.now(),
           title: todoTitle,
-          isCompleted: false
+          isCompleted: false,
         };
       
-        setTodoList(prev => [newTodo, ...prev]);
+        dispatch({
+          type: TODO_ACTIONS.ADD_TODO_START,
+          payload: {
+            id: newTodo.id,
+            title: newTodo.title,
+          },
+        });
       
         try {
           const response = await fetch('/api/tasks', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': token
+              'X-CSRF-TOKEN': token,
             },
             credentials: 'include',
             body: JSON.stringify({
               title: todoTitle,
-              isCompleted: false
-            })
+              isCompleted: false,
+            }),
           });
       
           if (!response.ok) {
@@ -109,20 +115,22 @@ function TodosPage({ token }) {
       
           const data = await response.json();
       
-          setTodoList(prev =>
-            prev.map(todo =>
-              todo.id === newTodo.id ? data : todo
-            )
-          );
-          
-          invalidateCache();
+          dispatch({
+            type: TODO_ACTIONS.ADD_TODO_SUCCESS,
+            payload: {
+              tempId: newTodo.id,
+              todo: data,
+            },
+          });
       
         } catch (err) {
-          setError(err.message);
-      
-          setTodoList(prev =>
-            prev.filter(todo => todo.id !== newTodo.id)
-          );
+          dispatch({
+            type: TODO_ACTIONS.ADD_TODO_ERROR,
+            payload: {
+              message: err.message,
+              tempId: newTodo.id,
+            },
+          });
         }
       }
 
