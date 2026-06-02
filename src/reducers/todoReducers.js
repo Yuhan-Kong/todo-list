@@ -89,20 +89,6 @@ export function todoReducer(state, action) {
             };
         }
 
-        case TODO_ACTIONS.ADD_TODO_START: {
-            return {
-              ...state,
-              todoList: [
-                {
-                  id: action.payload.id,
-                  title: action.payload.title,
-                  isCompleted: false,
-                },
-                ...state.todoList,
-              ],
-            };
-        }
-
         case TODO_ACTIONS.ADD_TODO_SUCCESS: {
             return {
               ...state,
