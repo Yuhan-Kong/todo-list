@@ -102,6 +102,17 @@ export function todoReducer(state, action) {
               ],
             };
         }
+
+        case TODO_ACTIONS.ADD_TODO_SUCCESS: {
+            return {
+              ...state,
+              todoList: state.todoList.map(todo =>
+                todo.id === action.payload.tempId
+                  ? action.payload.todo
+                  : todo
+              ),
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
