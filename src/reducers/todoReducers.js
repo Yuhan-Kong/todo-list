@@ -160,6 +160,11 @@ export function todoReducer(state, action) {
         case TODO_ACTIONS.UPDATE_TODO_SUCCESS: {
             return {
               ...state,
+              todoList: state.todoList.map(todo =>
+                todo.id === action.payload.todo.id
+                  ? action.payload.todo
+                  : todo
+              ),
             };
         }
 
