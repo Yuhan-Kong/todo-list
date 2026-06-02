@@ -135,6 +135,17 @@ export function todoReducer(state, action) {
               error: '',
             };
         }
+
+        case TODO_ACTIONS.COMPLETE_TODO_SUCCESS: {
+            return {
+              ...state,
+              todoList: state.todoList.map(todo =>
+                todo.id === action.payload.todo.id
+                  ? action.payload.todo
+                  : todo
+              ),
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
