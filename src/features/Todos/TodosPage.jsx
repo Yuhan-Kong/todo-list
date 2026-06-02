@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useReducer } from "react";
 import { todoReducer, initialTodoState, TODO_ACTIONS } from "../../reducers/todoReducers";
 import useDebounce from "../../utils/useDebounce";
 import FilterInput from "../../shared/FilterInput";
@@ -8,15 +8,18 @@ import TodoList from './TodoList/TodoList';
 
 
 function TodosPage({ token }) {
-    const [todoList, setTodoList] = useState([]);
-    const [error, setError] = useState('');
-    const [isTodoListLoading, setIsTodoListLoading] = useState(false);
-    const [sortBy, setSortBy] = useState('createdAt');
-    const [sortDirection, setSortDirection] = useState('desc');
-    const [filterTerm, setFilterTerm] = useState('');
+    const [state, dispatch] = useReducer(todoReducer, initialTodoState);
+    const {
+      todoList,
+      error,
+      filterError,
+      isTodoListLoading,
+      sortBy,
+      sortDirection,
+      filterTerm,
+      dataVersion,
+    } = state;
     const debouncedFilterTerm = useDebounce(filterTerm, 300);
-    const [dataVersion, setDataVersion] = useState(0);
-    const [filterError, setFilterError] = useState('');
 
     useEffect(() => {
         async function fetchTodos() {
