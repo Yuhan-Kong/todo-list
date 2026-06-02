@@ -34,7 +34,43 @@ export function AuthProvider({ children }) {
         };
       }
     };
-  
+    
+    const logout = async () => {
+        try {
+          if (!token) {
+            setEmail('');
+            setToken('');
+            return { success: true };
+          }
+    
+          const res = await fetch('/api/users/logoff', {
+            method: 'POST',
+            headers: {
+              'X-CSRF-TOKEN': token,
+            },
+            credentials: 'include',
+          });
+    
+          setEmail('');
+          setToken('');
+    
+          if (res.ok) {
+            return { success: true };
+          } else {
+            return {
+              success: false,
+              error: 'Logout request failed',
+            };
+          }
+        } catch (error) {
+          setEmail('');
+          setToken('');
+          return {
+            success: false,
+            error: 'Network error during logout',
+          };
+        }
+      };
   
     const value = {
       email,
