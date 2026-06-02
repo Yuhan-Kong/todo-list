@@ -46,7 +46,15 @@ export function todoReducer(state, action) {
                 error: '',
                 filterError: '',
             };
-      default:
-        throw new Error(`Unknown action type: ${action.type}`);
+
+        case TODO_ACTIONS.FETCH_SUCCESS:
+            return {
+                ...state,
+                todoList: action.payload.todos,
+                isTodoListLoading: false,
+            };
+            
+        default:
+            throw new Error(`Unknown action type: ${action.type}`);
     }
 }
