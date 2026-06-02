@@ -283,7 +283,13 @@ function TodosPage({ token }) {
             {filterError && (
               <div>
                 <p>{filterError}</p>
-                <button onClick={() => setFilterError('')}>
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: TODO_ACTIONS.CLEAR_FILTER_ERROR,
+                    })
+                  }
+                >
                   Clear Filter Error
                 </button>
                 <button
