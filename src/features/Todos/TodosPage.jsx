@@ -254,7 +254,12 @@ function TodosPage({ token }) {
       };
 
       const handleFilterChange = (newTerm) => {
-        setFilterTerm(newTerm);
+        dispatch({
+          type: TODO_ACTIONS.SET_FILTER,
+          payload: {
+            filterTerm: newTerm,
+          },
+        });
       };
 
       const invalidateCache = useCallback(() => {
