@@ -293,12 +293,11 @@ function TodosPage({ token }) {
                   Clear Filter Error
                 </button>
                 <button
-                  onClick={() => {
-                    setFilterTerm('');
-                    setSortBy('createdAt');
-                    setSortDirection('desc');
-                    setFilterError('');
-                  }}
+                  onClick={() =>
+                    dispatch({
+                      type: TODO_ACTIONS.RESET_FILTERS,
+                    })
+                  }
                 >
                   Reset Filters
                 </button>
