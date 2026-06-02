@@ -5,9 +5,11 @@ import FilterInput from "../../shared/FilterInput";
 import SortBy from "../../shared/SortBy";
 import TodoForm from "./TodoForm";
 import TodoList from './TodoList/TodoList';
+import { useAuth } from "../../contexts/AuthContext";
 
 
-function TodosPage({ token }) {
+function TodosPage() {
+    const { token } = useAuth();
     const [state, dispatch] = useReducer(todoReducer, initialTodoState);
     const {
       todoList,
