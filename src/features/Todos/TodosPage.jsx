@@ -187,49 +187,50 @@ function TodosPage({ token }) {
           todo => todo.id === editedTodo.id
         );
       
-        try {
-          setTodoList(prev =>
-            prev.map(todo => {
-              if (todo.id === editedTodo.id) {
-                return { ...editedTodo };
-              } else {
-                return todo;
-              }
-            })
-          );
+        dispatch({
+          type: TODO_ACTIONS.UPDATE_TODO_START,
+          payload: {
+            id: editedTodo.id,
+            editedTodo,
+          },
+        });
       
+        try {
           const response = await fetch(`/api/tasks/${editedTodo.id}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': token
+              'X-CSRF-TOKEN': token,
             },
             credentials: 'include',
             body: JSON.stringify({
               title: editedTodo.title,
               isCompleted: editedTodo.isCompleted,
-              // createdAt: originalTodo.createdAt
-            })
+            }),
           });
       
           if (!response.ok) {
             throw new Error('error');
           }
-
-          invalidateCache();
+      
+          const data = await response.json();
+      
+          dispatch({
+            type: TODO_ACTIONS.UPDATE_TODO_SUCCESS,
+            payload: {
+              todo: data,
+            },
+          });
       
         } catch (err) {
-          setError(err.message);
-      
-          setTodoList(prev =>
-            prev.map(todo => {
-              if (todo.id === editedTodo.id) {
-                return originalTodo;
-              } else {
-                return todo;
-              }
-            })
-          );
+          dispatch({
+            type: TODO_ACTIONS.UPDATE_TODO_ERROR,
+            payload: {
+              message: err.message,
+              id: editedTodo.id,
+              originalTodo,
+            },
+          });
         }
       }
       const handleSortByChange = (value) => {
