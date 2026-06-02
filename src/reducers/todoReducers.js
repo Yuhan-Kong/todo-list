@@ -170,6 +170,12 @@ export function todoReducer(state, action) {
               error: '',
             };
         }
+
+        case TODO_ACTIONS.UPDATE_TODO_SUCCESS: {
+            return {
+              ...state,
+            };
+        }
             
         default:
             throw new Error(`Unknown action type: ${action.type}`);
