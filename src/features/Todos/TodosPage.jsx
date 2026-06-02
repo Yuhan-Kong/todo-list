@@ -233,7 +233,6 @@ function TodosPage({ token }) {
           });
         }
       }
-      
       const handleSortByChange = (value) => {
         dispatch({
           type: TODO_ACTIONS.SET_SORT,
@@ -245,7 +244,13 @@ function TodosPage({ token }) {
       };
 
       const handleSortDirectionChange = (value) => {
-        setSortDirection(value);
+        dispatch({
+          type: TODO_ACTIONS.SET_SORT,
+          payload: {
+            sortBy,
+            sortDirection: value,
+          },
+        });
       };
 
       const handleFilterChange = (newTerm) => {
