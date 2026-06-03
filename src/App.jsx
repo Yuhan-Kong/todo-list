@@ -6,7 +6,13 @@ import { useAuth } from './contexts/AuthContext'
 
 function App() {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <TodosPage /> : <Logon />;
+
+  return (
+    <>
+      <Header />
+      {isAuthenticated ? <TodosPage /> : <Logon />}
+    </>
+  );
 }
 
-export default App
+export default App;
