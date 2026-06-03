@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useReducer } from "react";
-import { todoReducer, initialTodoState, TODO_ACTIONS } from "../../reducers/todoReducers";
+import { todoReducer, initialTodoState, TODO_ACTIONS } from "../../reducers/todoReducer";
 import useDebounce from "../../utils/useDebounce";
 import FilterInput from "../../shared/FilterInput";
 import SortBy from "../../shared/SortBy";
