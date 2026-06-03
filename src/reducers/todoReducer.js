@@ -53,6 +53,7 @@ export function todoReducer(state, action) {
                 ...state,
                 todoList: action.payload.tasks,
                 isTodoListLoading: false,
+                dataVersion: state.dataVersion + 1
             };
 
         case TODO_ACTIONS.FETCH_ERROR: {
@@ -98,6 +99,7 @@ export function todoReducer(state, action) {
                   ? action.payload.todo
                   : todo
               ),
+              dataVersion: state.dataVersion + 1,
             };
         }
 
@@ -131,6 +133,7 @@ export function todoReducer(state, action) {
                   ? action.payload.todo
                   : todo
               ),
+              dataVersion: state.dataVersion + 1,
             };
         }
 
@@ -166,6 +169,7 @@ export function todoReducer(state, action) {
                   ? action.payload.todo
                   : todo
               ),
+              dataVersion: state.dataVersion + 1,
             };
         }
 
