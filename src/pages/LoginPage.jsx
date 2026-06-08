@@ -15,6 +15,13 @@ function LoginPage() {
 
   const from = location.state?.from?.pathname || '/todos';
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, navigate, from]);
+
+
   async function handleSubmit(event) {
     event.preventDefault();
 
