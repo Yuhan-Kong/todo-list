@@ -8,7 +8,12 @@ function LoginPage() {
   const [authError, setAuthError] = useState('');
   const [isLoggingOn, setIsLoggingOn] = useState(false);
 
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/todos';
 
   async function handleSubmit(event) {
     event.preventDefault();
