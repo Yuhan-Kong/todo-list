@@ -318,6 +318,9 @@ function TodosPage() {
             onSortByChange={handleSortByChange}
             onSortDirectionChange={handleSortDirectionChange}
             />
+
+            <StatusFilter />
+
             <FilterInput
               filterTerm={filterTerm}
               onFilterChange={handleFilterChange}
@@ -328,6 +331,7 @@ function TodosPage() {
               onCompleteTodo={completeTodo} 
               onUpdateTodo={updateTodo} 
               dataVersion={dataVersion}
+              statusFilter={statusFilter}
             />
         </div>
       )
