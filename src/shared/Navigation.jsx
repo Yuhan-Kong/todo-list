@@ -24,6 +24,28 @@ function Navigation() {
                 About
             </NavLink>
         </li>
+
+        {isAuthenticated ? (
+          <>
+            <li>
+              <NavLink to="/todos" style={navLinkStyle}>
+                Todos
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/profile" style={navLinkStyle}>
+                Profile
+              </NavLink>
+            </li>
+          </>
+        ) : (
+          <li>
+            <NavLink to="/login" style={navLinkStyle}>
+              Login
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
