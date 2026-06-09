@@ -8,6 +8,8 @@ function Header() {
   return (
     <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <h1>Todo List</h1>
+
+      <Navigation />
       
       {isAuthenticated && <Logoff />}
     </header>
