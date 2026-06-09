@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 function ProfilePage() {
-  const { token, user } = useAuth();
+  const { token, email } = useAuth();
 
-  const [stats, setStats] = useState({
+  const [todoStats, setTodoStats] = useState({
     total: 0,
     completed: 0,
     active: 0,
   });
 
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
