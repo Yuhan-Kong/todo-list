@@ -6,6 +6,16 @@ function RequireAuth({ children }) {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: location,
+        },
+      });
+    }
+  }, [isAuthenticated, navigate, location]);
 }
 
 export default RequireAuth;
