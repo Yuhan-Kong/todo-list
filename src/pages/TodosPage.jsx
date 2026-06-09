@@ -6,6 +6,8 @@ import SortBy from "../shared/SortBy";
 import TodoForm from "../features/Todos/TodoForm";
 import TodoList from '../features/Todos/TodoList/TodoList';
 import { useAuth } from "../contexts/AuthContext";
+import { useSearchParams } from 'react-router';
+import StatusFilter from '../shared/StatusFilter';
 
 
 function TodosPage() {
