@@ -19,6 +19,11 @@ function Navigation() {
           padding: 0,
         }}
       >
+        <li>
+            <NavLink to="/about" style={navLinkStyle}>
+                About
+            </NavLink>
+        </li>
       </ul>
     </nav>
   );
