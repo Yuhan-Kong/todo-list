@@ -58,7 +58,7 @@ function ProfilePage() {
       <h1>Profile</h1>
 
       <h2>User Info</h2>
-      <p>Name: {user?.name}</p>
+      <p>Email: {email}</p>
       <p>Token: {token}</p>
 
       <h2>Todo Statistics</h2>
