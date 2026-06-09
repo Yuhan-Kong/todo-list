@@ -52,6 +52,11 @@ function ProfilePage() {
   
     fetchTodoStats();
   }, [token]);
+  
+  const completionRate =
+    todoStats.total === 0
+      ? 0
+      : (todoStats.completed / todoStats.total) * 100;
 
   return (
     <div>
