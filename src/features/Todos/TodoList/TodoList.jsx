@@ -1,7 +1,7 @@
 import TodoListItem from "./TodoListItem";
 import { useMemo } from "react";
 
-function TodoList({todoList, onCompleteTodo, onUpdateTodo, dataVersion}) {
+function TodoList({todoList, onCompleteTodo, onUpdateTodo, dataVersion, statusFilter = 'active',}) {
   const filteredTodoList = useMemo(() => {
     return {
       version: dataVersion,
