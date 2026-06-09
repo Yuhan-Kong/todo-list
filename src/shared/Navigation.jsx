@@ -8,6 +8,12 @@ function Navigation() {
       textDecoration: isActive ? 'underline' : 'none',
     };
   }
+  return (
+    <nav>
+      <ul>
+      </ul>
+    </nav>
+  );
 }
 
 export default Navigation;
