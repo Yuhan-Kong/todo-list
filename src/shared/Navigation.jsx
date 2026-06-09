@@ -8,9 +8,17 @@ function Navigation() {
       textDecoration: isActive ? 'underline' : 'none',
     };
   }
+
   return (
     <nav>
-      <ul>
+      <ul
+        style={{
+          listStyle: 'none',
+          display: 'flex',
+          gap: '1rem',
+          padding: 0,
+        }}
+      >
       </ul>
     </nav>
   );
