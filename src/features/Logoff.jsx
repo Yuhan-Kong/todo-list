@@ -7,7 +7,9 @@ function Logoff() {
   const handleLogout = async () => {
     const result = await logout();
     
-    if (!result.success) {
+    if (result.success) {
+      navigate('/login');
+    } else {
       console.error(result.error);
     }
   };
