@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import styles from './ProfilePage.module.css';
 
 function ProfilePage() {
   const { token, email } = useAuth();
@@ -63,21 +64,21 @@ function ProfilePage() {
       : (todoStats.completed / todoStats.total) * 100;
 
   return (
-    <div>
-      <h1>Profile</h1>
+    <div className={styles.page}>
+      <h1 className={styles.title}>Profile</h1>
 
-      <h2>User Info</h2>
-      <p>Name: {email}</p>
-      <p>Status: Active</p>
+      <h2 className={styles.subtitle}>User Info</h2>
+      <p className={styles.info}>Name: {email}</p>
+      <p className={styles.info}>Status: Active</p>
 
-      <h2>Todo Statistics</h2>
+      <h2 className={styles.subtitle}>Todo Statistics</h2>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className={styles.loading}>Loading...</p>
       ) : error ? (
-        <p>{error}</p>
+        <p className={styles.error}>{error}</p>
       ) : (
-        <ul>
+        <ul className={styles.statsList}>
           <li>Total: {todoStats.total}</li>
           <li>Completed: {todoStats.completed}</li>
           <li>Active: {todoStats.active}</li>
