@@ -1,0 +1,9 @@
+.page {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.message {
+  color: #6b7280;
+  font-style: italic;
+}
