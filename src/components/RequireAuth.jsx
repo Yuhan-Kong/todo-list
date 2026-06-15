@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
+import styles from './RequireAuth.module.css';
 
 function RequireAuth({ children }) {
   const { isAuthenticated } = useAuth();
@@ -18,7 +19,7 @@ function RequireAuth({ children }) {
   }, [isAuthenticated, navigate, location]);
 
   if (!isAuthenticated) {
-    return <p>Redirecting...</p>;
+    return <p className={styles.message}>Redirecting...</p>;
   }
 
   return children;
