@@ -1,0 +1,34 @@
+.page {
+  padding: 16px 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.info {
+  margin-bottom: 4px;
+}
+
+.statsList {
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.loading {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.error {
+  color: #dc2626;
+}
