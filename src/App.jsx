@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import { Routes, Route } from 'react-router';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -11,7 +11,7 @@ import Header from './shared/Header';
 
 function App() {
   return (
-    <>
+    <div className={styles.app}>
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
@@ -35,7 +35,7 @@ function App() {
         />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
