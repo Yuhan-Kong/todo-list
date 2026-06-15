@@ -8,6 +8,7 @@ import TodoList from '../features/Todos/TodoList/TodoList';
 import { useAuth } from "../contexts/AuthContext";
 import { useSearchParams } from 'react-router';
 import StatusFilter from '../shared/StatusFilter';
+import styles from './TodosPage.module.css';
 
 
 function TodosPage() {
@@ -270,11 +271,12 @@ function TodosPage() {
 
       
       return (
-        <div>
+        <div className={styles.page}>
             {error && (
-                <div>
-                    <p>{error}</p>
+                <div className={styles.error}>
+                    <p className={styles.errorText}>{error}</p>
                     <button
+                      className={styles.errorButton}
                       onClick={() =>
                         dispatch({
                           type: TODO_ACTIONS.CLEAR_ERROR,
@@ -287,44 +289,51 @@ function TodosPage() {
             )}
 
             {filterError && (
-              <div>
-                <p>{filterError}</p>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: TODO_ACTIONS.CLEAR_FILTER_ERROR,
-                    })
-                  }
-                >
-                  Clear Filter Error
-                </button>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: TODO_ACTIONS.RESET_FILTERS,
-                    })
-                  }
-                >
-                  Reset Filters
-                </button>
+              <div className={styles.error}>
+                <p className={styles.errorText}>{filterError}</p>
+                <div className={styles.errorActions}>
+                  <button
+                    className={styles.errorButton}
+                    onClick={() =>
+                      dispatch({
+                        type: TODO_ACTIONS.CLEAR_FILTER_ERROR,
+                      })
+                    }
+                  >
+                    Clear Filter Error
+                  </button>
+                  <button
+                    className={styles.errorButton}
+                    onClick={() =>
+                      dispatch({
+                        type: TODO_ACTIONS.RESET_FILTERS,
+                      })
+                    }
+                  >
+                    Reset Filters
+                  </button>
+                </div>
               </div>
             )}
 
-            {isTodoListLoading && <p>Loading...</p>}
+            {isTodoListLoading && <p className={styles.loading}>Loading...</p>}
 
-            <SortBy 
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            onSortByChange={handleSortByChange}
-            onSortDirectionChange={handleSortDirectionChange}
-            />
+            <div className={styles.toolbar}>
+              <SortBy 
+              sortBy={sortBy}
+              sortDirection={sortDirection}
+              onSortByChange={handleSortByChange}
+              onSortDirectionChange={handleSortDirectionChange}
+              />
 
-            <StatusFilter />
+              <StatusFilter />
 
-            <FilterInput
-              filterTerm={filterTerm}
-              onFilterChange={handleFilterChange}
-            />
+              <FilterInput
+                filterTerm={filterTerm}
+                onFilterChange={handleFilterChange}
+              />
+            </div>
+
             <TodoForm onAddTodo={addTodo} />
             <TodoList 
               todoList={todoList} 
