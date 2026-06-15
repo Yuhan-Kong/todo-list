@@ -1,5 +1,6 @@
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router';
+import styles from './Logoff.module.css';
 
 function Logoff() {
   const { logout } = useAuth();
@@ -17,7 +18,7 @@ function Logoff() {
   };
 
   return (
-    <button onClick={handleLogout} className="logout-button">
+    <button onClick={handleLogout} className={styles.logoffButton}>
       Log Off
     </button>
   );
