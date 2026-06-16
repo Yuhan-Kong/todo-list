@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useAuth } from "../contexts/AuthContext";
+import { sanitizeInput } from '../utils/todoValidation';
 import styles from './LoginPage.module.css';
 
 function LoginPage() {
@@ -29,7 +30,7 @@ function LoginPage() {
     setIsLoggingOn(true);
     setAuthError('');
 
-    const result = await login(email, password);
+    const result = await login(sanitizeInput(email), password);
 
     if (!result.success) {
       setAuthError(result.error);
