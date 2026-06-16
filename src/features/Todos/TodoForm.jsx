@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useState } from "react";
 import TextInputWithLabel from "../../shared/TextInputWithLabel";
-import { isValidTodoTitle } from "../../utils/todoValidation";
+import { isValidTodoTitle, sanitizeInput } from "../../utils/todoValidation";
 import styles from './TodoForm.module.css';
 
 function TodoForm({ onAddTodo }) {
@@ -11,7 +11,7 @@ function TodoForm({ onAddTodo }) {
     const handleAddTodo = (event) => {
         event.preventDefault();
 
-        onAddTodo(workingTodoTitle);
+        onAddTodo(sanitizeInput(workingTodoTitle));
 
         if (workingTodoTitle && workingTodoTitle !== "") {
             
