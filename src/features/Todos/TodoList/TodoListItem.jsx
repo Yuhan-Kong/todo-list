@@ -1,6 +1,6 @@
 import { useState } from "react";
 import TextInputWithLabel from "../../../shared/TextInputWithLabel";
-import { isValidTodoTitle } from "../../../utils/todoValidation";
+import { isValidTodoTitle, sanitizeInput } from "../../../utils/todoValidation";
 import styles from './TodoListItem.module.css';
 
 function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
@@ -21,7 +21,7 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
         event.preventDefault();
         onUpdateTodo({
             ...todo,
-            title: workingTitle,
+            title: sanitizeInput(workingTitle),
         });
         setIsEditing(false);
     }
