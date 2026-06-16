@@ -36,9 +36,14 @@ function TodosPage() {
           const paramsObject = {
             sortBy,
             sortDirection,
-            isCompleted: false,
             limit: 100,
           };
+
+          if (statusFilter === 'active') {
+            paramsObject.isCompleted = false;
+          } else if (statusFilter === 'completed') {
+            paramsObject.isCompleted = true;
+          }
       
           if (debouncedFilterTerm) {
             paramsObject.find = debouncedFilterTerm;
@@ -85,7 +90,7 @@ function TodosPage() {
         }
       }
         fetchTodos()
-      }, [token, sortBy, sortDirection, debouncedFilterTerm])
+      }, [token, sortBy, sortDirection, debouncedFilterTerm, statusFilter])
 
       async function addTodo(todoTitle) {
         const newTodo = {
