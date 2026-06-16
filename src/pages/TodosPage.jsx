@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 import { todoReducer, initialTodoState, TODO_ACTIONS } from "../reducers/todoReducer";
 import useDebounce from "../utils/useDebounce";
 import FilterInput from "../shared/FilterInput";
