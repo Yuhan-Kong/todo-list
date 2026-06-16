@@ -12,8 +12,6 @@ function Logoff() {
     
     if (result.success) {
       navigate('/login');
-    } else {
-      console.error(result.error);
     }
   };
 
