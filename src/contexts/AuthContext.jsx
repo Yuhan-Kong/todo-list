@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
 
       return {
         success: false,
-        error: `Authentication failed: ${data?.message}`,
+        error: 'Invalid email or password. Please try again.',
       };
     } catch (error) {
       return {
