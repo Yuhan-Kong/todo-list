@@ -1,16 +1,21 @@
-import { useState, useEffect, useCallback, useReducer } from "react";
-import { todoReducer, initialTodoState, TODO_ACTIONS } from "../../reducers/todoReducer";
-import useDebounce from "../../utils/useDebounce";
-import FilterInput from "../../shared/FilterInput";
-import SortBy from "../../shared/SortBy";
-import TodoForm from "./TodoForm";
-import TodoList from './TodoList/TodoList';
-import { useAuth } from "../../contexts/AuthContext";
+import { useState, useEffect, useReducer } from "react";
+import { todoReducer, initialTodoState, TODO_ACTIONS } from "../reducers/todoReducer";
+import useDebounce from "../utils/useDebounce";
+import FilterInput from "../shared/FilterInput";
+import SortBy from "../shared/SortBy";
+import TodoForm from "../features/Todos/TodoForm";
+import TodoList from '../features/Todos/TodoList/TodoList';
+import { useAuth } from "../contexts/AuthContext";
+import { useSearchParams } from 'react-router';
+import StatusFilter from '../shared/StatusFilter';
+import styles from './TodosPage.module.css';
 
 
 function TodosPage() {
     const { token } = useAuth();
+    const [searchParams] = useSearchParams(); 
     const [state, dispatch] = useReducer(todoReducer, initialTodoState);
+    const statusFilter = searchParams.get('status') || 'all';  
     const {
       todoList,
       error,
@@ -266,11 +271,12 @@ function TodosPage() {
 
       
       return (
-        <div>
+        <div className={styles.page}>
             {error && (
-                <div>
-                    <p>{error}</p>
+                <div className={styles.error}>
+                    <p className={styles.errorText}>{error}</p>
                     <button
+                      className={styles.errorButton}
                       onClick={() =>
                         dispatch({
                           type: TODO_ACTIONS.CLEAR_ERROR,
@@ -283,47 +289,58 @@ function TodosPage() {
             )}
 
             {filterError && (
-              <div>
-                <p>{filterError}</p>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: TODO_ACTIONS.CLEAR_FILTER_ERROR,
-                    })
-                  }
-                >
-                  Clear Filter Error
-                </button>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: TODO_ACTIONS.RESET_FILTERS,
-                    })
-                  }
-                >
-                  Reset Filters
-                </button>
+              <div className={styles.error}>
+                <p className={styles.errorText}>{filterError}</p>
+                <div className={styles.errorActions}>
+                  <button
+                    className={styles.errorButton}
+                    onClick={() =>
+                      dispatch({
+                        type: TODO_ACTIONS.CLEAR_FILTER_ERROR,
+                      })
+                    }
+                  >
+                    Clear Filter Error
+                  </button>
+                  <button
+                    className={styles.errorButton}
+                    onClick={() =>
+                      dispatch({
+                        type: TODO_ACTIONS.RESET_FILTERS,
+                      })
+                    }
+                  >
+                    Reset Filters
+                  </button>
+                </div>
               </div>
             )}
 
-            {isTodoListLoading && <p>Loading...</p>}
+            {isTodoListLoading && <p className={styles.loading}>Loading...</p>}
 
-            <SortBy 
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            onSortByChange={handleSortByChange}
-            onSortDirectionChange={handleSortDirectionChange}
-            />
-            <FilterInput
-              filterTerm={filterTerm}
-              onFilterChange={handleFilterChange}
-            />
+            <div className={styles.toolbar}>
+              <SortBy 
+              sortBy={sortBy}
+              sortDirection={sortDirection}
+              onSortByChange={handleSortByChange}
+              onSortDirectionChange={handleSortDirectionChange}
+              />
+
+              <StatusFilter />
+
+              <FilterInput
+                filterTerm={filterTerm}
+                onFilterChange={handleFilterChange}
+              />
+            </div>
+
             <TodoForm onAddTodo={addTodo} />
             <TodoList 
               todoList={todoList} 
               onCompleteTodo={completeTodo} 
               onUpdateTodo={updateTodo} 
               dataVersion={dataVersion}
+              statusFilter={statusFilter}
             />
         </div>
       )

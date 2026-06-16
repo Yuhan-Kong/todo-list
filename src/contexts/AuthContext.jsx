@@ -83,7 +83,6 @@ export function AuthProvider({ children }) {
         error: 'Logout request failed',
       };
     } catch (error) {
-      console.log('Logout failed: ', error);
       
       setEmail('');
       setToken('');

@@ -1,0 +1,32 @@
+.page {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #d1d5db;
+  margin-bottom: 8px;
+}
+
+.message {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.link {
+  color: #2563eb;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #1d4ed8;
+}
