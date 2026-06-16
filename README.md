@@ -95,6 +95,7 @@ I chose **CSS Modules** for styling because:
 
 ## Future Improvements
 
+- Add delete functionality for completed todos
 - Add unit tests for critical components
 - Implement dark/light theme toggle
 - Add drag and drop for reordering todos
